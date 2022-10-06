@@ -1,0 +1,12 @@
+.tag-container {
+    padding: 0.2rem 1rem;
+    border-radius: 10px;
+}
+
+.tag-title {
+    font-size: 14px;
+}
+
+.tag-container:hover {
+    transform: scale(1.1);
+}

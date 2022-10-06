@@ -1,0 +1,83 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Contact">
+    <div class="container">
+        <p class="section-title"> Contact </p>
+        <p class="contact-subtitle"> You can find me in any of the following places: </p>
+        <div class="contact-list">
+            <div class="contact-element">
+                <a href="mailto:zjukd00m@protonmail.com">
+                    <img src="/assets/protonmail.svg" alt="protonmail" />
+                </a>
+                <p> zjukd00m@protonmail.com </p>
+            </div>
+            <div class="contact-element">
+                <a href="https://github.com/zjukd00m" target="_blank">
+                    <img src="/assets/github.png" alt="github" />
+                </a>
+                <p> github/zjukd00m </p>
+            </div>
+            <div class="contact-element">
+                <a href="https://gitlab.com/zjukd00m" target="_blank">
+                    <img src="/assets/gitlab.svg" alt="gitlab" />
+                </a>
+                <p> gitlab/zjukd00m </p>
+            </div>
+            <div class="contact-element">
+                <a href="https://twitter.com/zjukd00m" target="_blank">
+                    <img src="/assets/twitter.svg" alt="twitter" />
+                </a>
+                <p> twitter/zjukd00m </p>
+            </div>
+        </div>
+    </div>
+</BaseLayout>
+
+<style>
+    .contact-subtitle {
+        font-size: 16px;
+    }
+
+    .contact-list {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin: 1rem;
+    }
+    
+    .contact-element {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0.5rem 0 0.5rem 0;
+    }
+    
+    .contact-element > a > img {
+        border-radius: 100%;
+        background-color: var(--bg-main);
+        padding: 2rem;
+        height: 100px;
+        width: 100px;
+        margin-bottom: 1rem;
+        cursor: pointer;
+    }
+
+    @media only screen and (max-width: 1440px) {
+        .contact-element > img {
+            height: 70px;
+            width: 70px;
+        }
+    }
+
+    @media only screen and (max-width: 425px) {
+        .contact-list {
+            margin: 0;
+        }
+    }
+</style>

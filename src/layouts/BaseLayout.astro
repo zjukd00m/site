@@ -1,0 +1,371 @@
+---
+import SocialMedia from "../components/SocialMedia.astro";
+import "../styles/global.css";
+
+const { title } = Astro.props.frontmatter || Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="icon" href="favicon.png" type="image/png" />
+        <script src="https://kit.fontawesome.com/207fb70a4b.js" crossorigin="anonymous"></script>
+        <title> { title }</title>
+    </head>
+    <body>
+        <div class="main-container">
+            <!-- Sidebar -->
+            <div class="sidebar-layout">
+                <div class="sidebar-main">
+                    <div class="avatar"></div>
+                    <p class="my-name">Zjukd00m</p>
+                    <p class="my-role"> Backend developer </p>
+                </div>
+                <div id="hamburguer-menu">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+                <div id="sidebar-list-container" class="sidebar-list-container">
+                    <ul class="sidebar-list">
+                        <li class="list-element">
+                            <div class="element-btn">
+                                <a href="/" class="element-name">Who Am I ?</a>
+                            </div>
+                        </li>
+                        <li class="list-element">
+                            <div class="element-btn">
+                                <a href="/experience" class="element-name">Experience</a>
+                            </div>
+                        </li>
+                        <li class="list-element">
+                            <div class="element-btn">
+                                <a href="/projects" class="element-name">Projects</a>
+                            </div>
+                        </li>
+                        <li class="list-element">
+                            <div class="element-btn">
+                                <a href="/contact" class="element-name">Contact</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="sidebar-social-media">
+                        <SocialMedia
+                            name="Github"
+                            url="assets/github.png"
+                            link="https://github.com/zjukd00m"
+                        />
+                    </div>
+                </div>
+            </div>
+            <!-- Main content -->
+            <div class="slot-layout">
+                <slot />
+            </div>
+            <!-- Footer -->
+            <footer id="footer">
+                <marquee direction="right">
+                    <div class="marquee-content">
+                        <p class="footer-paragraph"> ICONS WERE DOWNLOADED FROM <a href="https://iconscout.com/" class="footer-p-styled" target="_blank"> ICONSCOUT </a> AND <a href="https://icons8.com/icons/" class="footer-p-styled" target="_blank"> ICONS8 </a> </p>
+                        <p class="footer-paragraph"> 
+                            THIS WEBSITE WAS WRITTEN WITH <span class="footer-p-styled"> ASTRO.JS </span> AND <span class="footer-p-styled"> REACT.JS </span>
+                        </p>
+                    </div>
+                </marquee>
+            </footer>
+        </div>
+    </body>
+</html>
+
+<script>
+    const hamburguerMenu = document.getElementById("hamburguer-menu");
+    const sidebarListContainer = document.getElementById("sidebar-list-container");
+    const elementNames = document.getElementsByClassName("element-name");
+
+    let showHMenu = false;
+
+    if (hamburguerMenu && sidebarListContainer && elementNames?.length) {
+        hamburguerMenu.addEventListener("click", function () {
+            showHMenu = !showHMenu;
+
+            if (showHMenu) {
+                sidebarListContainer.style.display = "flex";
+            } else {
+                sidebarListContainer.style.display = "none";
+            }
+        });
+
+        for (let element of elementNames) {
+            element.addEventListener("click", () => {
+                showHMenu = false;
+                sidebarListContainer.style.display = "none";
+            })
+        }
+
+        window.addEventListener("resize", () => {
+            const { innerWidth } = window;
+
+            if (innerWidth > 768 && !showHMenu) {
+                showHMenu = true;
+                sidebarListContainer.style.display = "flex";
+            } else if (innerWidth <= 768 && showHMenu) {
+                showHMenu = false;
+                sidebarListContainer.style.display = "none";
+            }
+        });
+    }
+</script>
+
+
+<style>
+    .avatar {
+        height: 250px;
+        width: 250px;
+        border-radius: 50%;
+        background-size: cover;
+        background-image: url("/assets/zjukd00m.png");
+    }
+
+    .avatar-blur {
+        height: 100%;
+        border-radius: 50%;
+    }
+
+    .main-container {
+        display: grid;
+        grid-template-columns: 20% 80%;
+        grid-template-rows: 1fr auto;
+        height: 100%;
+    }
+
+    .sidebar-list-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5rem;
+    }
+
+    .sidebar-layout {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        background-color: var(--bg-main);
+        height: 100%;
+        box-sizing: border-box;
+    }
+
+    #hamburguer-menu {
+        display: none;
+    }
+
+    #hamburguer-menu > .fa-bars {
+        color: white;
+    }
+
+    .sidebar-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 30px; 
+    }
+    .element-name {
+        font-size: 22px;
+        line-height: 1.2px;
+        color: #eceff4;
+        text-decoration: none;
+    }
+    .element-btn:hover {
+        border-bottom: 2px solid #bd93f9;
+    }
+    .sidebar-social-media {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        gap: 3em;
+    }
+    .my-name {
+        font-size: 32px;
+        text-align: center;
+        color: white;
+        margin-top: 2rem;
+    }
+    .my-role {
+        font-size: 14px;
+        text-align: center;
+        color: white;
+        margin-top: 1.3rem;
+    }
+    .slot-layout {
+        background-color: #ECEFF4;
+        padding: 0 30px;
+        overflow-y: scroll;
+        height: 100%;
+    }
+    
+    slot {
+        overflow-y: scroll;
+    }
+
+    #footer {
+        width: 100%;
+        grid-column: span 2;
+        background-color: var(--bg-secondary);
+        color: white;
+        font-size: 11px;
+        font-weight: 600;
+    }
+
+    .marquee-content {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 50%;
+        padding: 0.2rem;
+    }
+
+    .footer-p-styled {
+        text-decoration: none;
+        color: #50fa7b;
+    }
+
+    @media only screen and (max-width: 1440px) {
+        .sidebar-list {
+            gap: 20px;
+        }
+        .avatar {
+            height: 200px;
+            width: 200px;
+        }
+        .my-name {
+            font-size: 28px;
+        }
+        .my-role {
+            font-size: 12px;
+        }
+        .element-name {
+            font-size: 16px;
+        }
+        .slot-content {
+            font-size: 14px;
+        }
+    }
+
+    @media only screen and (max-width: 1024px) {
+        .avatar {
+            height: 150px;
+            width: 150px;
+        }
+    }
+
+    @media only screen and (max-width: 768px) {
+        .main-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-main {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 1rem;
+            margin: 0.4rem 0 0.4rem 0.4rem;
+        }
+
+
+        #hamburguer-menu {
+            display: block;
+            place-self: center end;
+            margin-right: 1rem;
+        }
+        
+        .sidebar-layout {
+            align-items: center;
+            height: fit-content;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            justify-content: center;
+        }
+
+        .sidebar-list {
+            align-items: flex-start;
+            gap: 0.5rem;
+            width: 100%;
+            padding: 1rem;
+            box-sizing: border-box;
+        }
+
+        .sidebar-list-container {
+            grid-column: span 2;
+            height: 100vh;
+            justify-content: center;
+        }
+
+        .list-element {
+            padding: 0.5rem;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .avatar {
+            height: 60px;
+            width: 60px;
+        }
+
+        .my-name {
+            font-size: 16px;
+            margin-top: 0;
+        }
+
+        .my-role {
+            margin-top: 0;
+            display: none;
+        }
+
+        .element-name {
+            font-size: 18px;
+        }
+
+        .sidebar-list-container {
+            display: none;
+        }
+    }
+
+    @media only screen and (max-width: 425px) {
+        .sidebar-main {
+            flex-grow: 1;
+            flex-wrap: wrap;
+        }
+
+        .sidebar-layout {
+            justify-content: flex-start;
+        }
+
+        #hamburguer-menu {
+            display: block;
+        }
+
+        .sidebar-list-container {
+            display: none;
+        }
+    }
+</style>

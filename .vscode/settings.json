@@ -1,0 +1,7 @@
+{
+    "editor.fontFamily": "'Fira Code'",
+    "editor.fontLigatures": true,
+    "files.associations": {
+        "*.mdx": "markdown"
+    },
+}
