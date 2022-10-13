@@ -1,49 +1,15 @@
-# Welcome to [Astro](https://astro.build)
+# Personal site
+It was written with astro.js and react through the use of astro islands which consists of partially hydrating the javascript content in a page with static content.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
+A react component can be rendered inside an astro component and it can optionally be loaded dynamically if it needs user interaction.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+I _deployed_ it using cloudflare pages (a serverless solution), it can be easely done with an npm package and you have the advantage of not paying for the hosting unless you want to enhance the protection, analytics and more specific features offered by cloudflare.
 
-![basics](https://user-images.githubusercontent.com/4677417/186188965-73453154-fdec-4d6b-9c34-cb35c248ae5b.png)
+I bought a domain at namecheap and to asign it to the deployed website I just had to add the cloudflare name server records and at the cloudflare site page I added CNAME records pointing to the existing and default https url.
 
+What I liked about using cloudflare is to have basic DDoS protection and traffic filtering, also the analytics to view which countries has seen the page and how many times.
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                | Action                                             |
-| :--------------------- | :------------------------------------------------- |
-| `npm install`          | Installs dependencies                              |
-| `npm run dev`          | Starts local dev server at `localhost:3000`        |
-| `npm run build`        | Build your production site to `./dist/`            |
-| `npm run preview`      | Preview your build locally, before deploying       |
-| `npm run astro ...`    | Run CLI commands like `astro add`, `astro preview` |
-| `npm run astro --help` | Get help using the Astro CLI                       |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Features
+### Image avatar
+The image avatar was generated using the AI dalle2 and I minted it as an nft in the polygon blockchain just for fun and to consume the http open sea rest api.
+- [ ] Add an image modal to be displayed when the avatar is clicked. It will request data from the OpenSea API
