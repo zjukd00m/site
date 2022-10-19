@@ -31,6 +31,28 @@ const { title } = Astro.props.frontmatter || Astro.props;
     </head>
     <body>
         <div class="main-container">
+            <div id="avatar-modal" class="avatar-modal-container">
+                <div class="avatar-modal">
+                    <p class="modal-title"> d00mbat </p>
+                    <p class="modal-subtitle"> A bat that was generated using the AI dalle 2 and I minted on the polygon chain. </p>
+                    <img class="modal-close" src="/assets/icons8-close.svg" />
+                    <img class="avatar-modal-img" height="500" width="500" src="/favicon.png" /> 
+                    <div class="modal-description">
+                        <p> It was created directly on OpenSea but I'm planning to write the smart contract for it and deploy it on the matic network. </p>
+                        <!-- <ul style="margin-top: 1.5rem">
+                            <li style="margin: 0.2rem 0"> <p> Token ID: <span> 383911... </span> </p> </li>
+                            <li style="margin: 0.2rem 0"> <p> Owner: <span> 0x000000... </span> </p> </li>
+                        </ul> -->
+                        <a 
+                            href="https://opensea.io/assets/matic/0x2953399124f0cbb46d2cbacd8a89cf0599974963/86322902810144205852617150587309662080690434118817763483839114517669119787009/"
+                            target="_blank"
+                            class="modal-cta"
+                        > 
+                            OpenSea url
+                        </a> 
+                    </div>
+                </div>
+            </div>
             <!-- Sidebar -->
             <div class="sidebar-layout">
                 <div class="sidebar-main">
@@ -92,7 +114,7 @@ const { title } = Astro.props.frontmatter || Astro.props;
     </body>
 </html>
 
-<script>
+<script global>
     const hamburguerMenu = document.getElementById("hamburguer-menu");
     const sidebarListContainer = document.getElementById("sidebar-list-container");
     const elementNames = document.getElementsByClassName("element-name");
@@ -129,6 +151,25 @@ const { title } = Astro.props.frontmatter || Astro.props;
             }
         });
     }
+
+    // Avatar and modal functionality
+    const avatar = document.querySelector(".avatar");
+    const modal = document.getElementById("avatar-modal");
+    const modalBtn = document.querySelector(".modal-close");
+    let modalOpened = false;
+
+    function toggleAvatarModal () {
+        modalOpened = !modalOpened;
+
+        if (modal && modalOpened) {
+            modal.style.display = "flex";
+        } else if (modal && !modalOpened) {
+            modal.style.display = "none";
+        }
+    }
+
+    avatar?.addEventListener("click", toggleAvatarModal);
+    modalBtn?.addEventListener("click", toggleAvatarModal);
 </script>
 
 
@@ -139,12 +180,84 @@ const { title } = Astro.props.frontmatter || Astro.props;
         border-radius: 50%;
         background-size: cover;
         background-image: url("/assets/zjukd00m.png");
+        cursor: pointer;
     }
 
     .avatar-blur {
         height: 100%;
         border-radius: 50%;
     }
+
+    /* Modal styles */
+    .avatar-modal-container {
+        display: none;
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0.1, 0.1, 0.1, 0.8);
+        z-index: 500;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .avatar-modal {
+        max-width: 550px;
+        background-color: #ECEFF4;
+        padding: 1.3rem;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .modal-title {
+        font-size: 28px;
+        font-weight: 600;
+    }
+
+    .modal-subtitle {
+        font-size: 14px;
+    }
+
+    .modal-description {
+        font-size: 14px;
+    }
+
+    .modal-close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 1rem 1rem 0 0;
+        cursor: pointer;
+    }
+
+    .modal-close:hover {
+        opacity: 60%;
+    }
+
+    .modal-cta {
+        transition: all 0.5s ease;
+        text-decoration: none; 
+        color: black; 
+        padding: 0.5rem 1rem; 
+        background-color: var(--main-color);
+        border-radius: 10px;
+        font-weight: 500;
+        margin: 0.5rem 0;
+        display: inline-block;
+    }
+
+    .modal-cta:hover {
+        background-color: #50fa7b;
+    }
+
+    .avatar-modal-img {
+        z-index: 600;
+        margin: 0 auto;
+    }
+
+    /* */
 
     .main-container {
         display: grid;
