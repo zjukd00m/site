@@ -14,16 +14,20 @@
 }
 
 .experience-title {
-    font-size: 24px;
+    font-size: 21px;
+    font-family: "IBM Plex Sans Condensed", sans-serif;
+    text-transform: uppercase;
 }
 
 .experience-date {
     display: inline-block;
     font-size: 14px;
+    font-family: "Raleway", sans-serif;
 }
 
 .experience-role {
     font-size: 12px;
+    font-family: "Raleway", sans-serif;
 }
 
 .experience-list {
@@ -36,12 +40,17 @@
 }
 
 .experience-description {
-    font-size: 16px;
+    font-size: 15px;
+    font-family: var(--text-font);
 }
 
 @media only screen and (max-width: 1440px) {
+    .experience-title {
+        font-size: 18px;
+    }
+
     .experience-description {
-        font-size: 12px;
+        font-size: 13px;
     }
 }
 
@@ -51,10 +60,6 @@
         align-items: flex-start;
         gap: 0.1rem;
         margin-bottom: 0.1rem;
-    }
-
-    .experience-title {
-        font-size: 20px;
     }
 
     .experience-date {

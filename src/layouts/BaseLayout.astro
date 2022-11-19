@@ -1,5 +1,7 @@
 ---
-import SocialMedia from "../components/SocialMedia.astro";
+import Sidebar from "../components/Sidebar";
+import Modal from "../components/Modal";
+import AvatarModal from "../components/AvatarModal";
 import "../styles/global.css";
 
 const { title } = Astro.props.frontmatter || Astro.props;
@@ -31,52 +33,17 @@ const { title } = Astro.props.frontmatter || Astro.props;
     </head>
     <body>
         <div class="main-container">
+            <!-- Avatar modal -->
+            <AvatarModal />
+
             <!-- Sidebar -->
-            <div class="sidebar-layout">
-                <div class="sidebar-main">
-                    <div class="avatar"></div>
-                    <p class="my-name">Zjukd00m</p>
-                    <p class="my-role"> Backend developer </p>
-                </div>
-                <div id="hamburguer-menu">
-                    <i class="fa-solid fa-bars"></i>
-                </div>
-                <div id="sidebar-list-container" class="sidebar-list-container">
-                    <ul class="sidebar-list">
-                        <li class="list-element">
-                            <div class="element-btn">
-                                <a href="/" class="element-name">Who Am I ?</a>
-                            </div>
-                        </li>
-                        <li class="list-element">
-                            <div class="element-btn">
-                                <a href="/experience" class="element-name">Experience</a>
-                            </div>
-                        </li>
-                        <li class="list-element">
-                            <div class="element-btn">
-                                <a href="/projects" class="element-name">Projects</a>
-                            </div>
-                        </li>
-                        <li class="list-element">
-                            <div class="element-btn">
-                                <a href="/contact" class="element-name">Contact</a>
-                            </div>
-                        </li>
-                    </ul>
-                    <div class="sidebar-social-media">
-                        <SocialMedia
-                            name="Github"
-                            url="assets/github.png"
-                            link="https://github.com/zjukd00m"
-                        />
-                    </div>
-                </div>
-            </div>
+            <Sidebar />
+
             <!-- Main content -->
             <div class="slot-layout">
                 <slot />
             </div>
+
             <!-- Footer -->
             <footer id="footer">
                 <marquee direction="right">
@@ -94,38 +61,18 @@ const { title } = Astro.props.frontmatter || Astro.props;
 
 <script>
     const hamburguerMenu = document.getElementById("hamburguer-menu");
-    const sidebarListContainer = document.getElementById("sidebar-list-container");
-    const elementNames = document.getElementsByClassName("element-name");
+    const sidebarBottom = document.getElementById("sidebar-bottom");
 
     let showHMenu = false;
 
-    if (hamburguerMenu && sidebarListContainer && elementNames?.length) {
+    if (hamburguerMenu && sidebarBottom) {
         hamburguerMenu.addEventListener("click", function () {
             showHMenu = !showHMenu;
-
+            
             if (showHMenu) {
-                sidebarListContainer.style.display = "flex";
+                sidebarBottom.style.display = "flex";
             } else {
-                sidebarListContainer.style.display = "none";
-            }
-        });
-
-        for (let element of elementNames) {
-            element.addEventListener("click", () => {
-                showHMenu = false;
-                sidebarListContainer.style.display = "none";
-            })
-        }
-
-        window.addEventListener("resize", () => {
-            const { innerWidth } = window;
-
-            if (innerWidth > 768 && !showHMenu) {
-                showHMenu = true;
-                sidebarListContainer.style.display = "flex";
-            } else if (innerWidth <= 768 && showHMenu) {
-                showHMenu = false;
-                sidebarListContainer.style.display = "none";
+                sidebarBottom.style.display = "none";
             }
         });
     }
@@ -133,41 +80,11 @@ const { title } = Astro.props.frontmatter || Astro.props;
 
 
 <style>
-    .avatar {
-        height: 250px;
-        width: 250px;
-        border-radius: 50%;
-        background-size: cover;
-        background-image: url("/assets/zjukd00m.png");
-    }
-
-    .avatar-blur {
-        height: 100%;
-        border-radius: 50%;
-    }
-
     .main-container {
         display: grid;
         grid-template-columns: 20% 80%;
         grid-template-rows: 1fr auto;
         height: 100%;
-    }
-
-    .sidebar-list-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 5rem;
-    }
-
-    .sidebar-layout {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-around;
-        background-color: var(--bg-main);
-        height: 100%;
-        box-sizing: border-box;
     }
 
     #hamburguer-menu {
@@ -178,43 +95,9 @@ const { title } = Astro.props.frontmatter || Astro.props;
         color: white;
     }
 
-    .sidebar-list {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 30px; 
-    }
-    .element-name {
-        font-size: 22px;
-        line-height: 1.2px;
-        color: #eceff4;
-        text-decoration: none;
-    }
-    .element-btn:hover {
-        border-bottom: 2px solid #bd93f9;
-    }
-    .sidebar-social-media {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-evenly;
-        gap: 3em;
-    }
-    .my-name {
-        font-size: 32px;
-        text-align: center;
-        color: white;
-        margin-top: 2rem;
-    }
-    .my-role {
-        font-size: 14px;
-        text-align: center;
-        color: white;
-        margin-top: 1.3rem;
-    }
     .slot-layout {
-        background-color: #ECEFF4;
+        /* background-color: #ECEFF4; */
+        /* background-color: #4C566A; */
         padding: 0 30px;
         overflow-y: scroll;
         height: 100%;
@@ -231,6 +114,7 @@ const { title } = Astro.props.frontmatter || Astro.props;
         color: white;
         font-size: 11px;
         font-weight: 600;
+        font-family: var(--text-font);
     }
 
     .marquee-content {

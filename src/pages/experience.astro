@@ -1,5 +1,4 @@
 ---
-import "web-streams-polyfill/es2018";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ExperienceCard from "../components/ExperienceCard";
 ---
@@ -131,6 +130,16 @@ import ExperienceCard from "../components/ExperienceCard";
     .icons-right > img {
         height: 50px;
         width: 50px;
+    }
+
+    .no-icons {
+        font-family: var(--text-font);
+    }
+
+    @media only screen and (max-width: 1440px) {
+        .no-icons {
+            font-size: 14px;
+        }
     }
     
     @media only screen and (max-width: 768px) {
