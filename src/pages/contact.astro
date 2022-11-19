@@ -5,31 +5,31 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 <BaseLayout title="Contact">
     <div class="container">
         <p class="section-title"> Contact </p>
-        <p class="contact-subtitle"> You can find me in any of the following places: </p>
+        <p class="section-subtitle"> You can find me in any of the following places: </p>
         <div class="contact-list">
             <div class="contact-element">
                 <a href="mailto:zjukd00m@protonmail.com">
                     <img src="/assets/protonmail.svg" alt="protonmail" />
                 </a>
-                <p> zjukd00m@protonmail.com </p>
+                <p class="contact-text"> zjukd00m@protonmail.com </p>
             </div>
             <div class="contact-element">
                 <a href="https://github.com/zjukd00m" target="_blank">
                     <img src="/assets/github.png" alt="github" />
                 </a>
-                <p> github/zjukd00m </p>
+                 <p class="contact-text"> github/zjukd00m </p>
             </div>
             <div class="contact-element">
                 <a href="https://gitlab.com/zjukd00m" target="_blank">
                     <img src="/assets/gitlab.svg" alt="gitlab" />
                 </a>
-                <p> gitlab/zjukd00m </p>
+                <p class="contact-text"> gitlab/zjukd00m </p>
             </div>
             <div class="contact-element">
                 <a href="https://twitter.com/zjukd00m" target="_blank">
                     <img src="/assets/twitter.svg" alt="twitter" />
                 </a>
-                <p> twitter/zjukd00m </p>
+                <p class="contact-text"> twitter/zjukd00m </p>
             </div>
         </div>
     </div>
@@ -68,10 +68,19 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         cursor: pointer;
     }
 
+    .contact-element > p {
+        font-size: 16px;
+        font-family: var(--text-font);
+    }
+
     @media only screen and (max-width: 1440px) {
         .contact-element > img {
             height: 70px;
             width: 70px;
+        }
+
+        .contact-element > p {
+            font-size: 14px;
         }
     }
 

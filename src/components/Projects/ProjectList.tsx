@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import ProjectCard from "./ProjectCard";
-import "../../../styles/project-view.css";
+import "../../styles/project-view.css";
 
 interface ProjectViewProps {
     projects: any[];

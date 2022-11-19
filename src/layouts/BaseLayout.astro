@@ -1,5 +1,7 @@
 ---
-import SocialMedia from "../components/SocialMedia.astro";
+import Sidebar from "../components/Sidebar";
+import Modal from "../components/Modal";
+import AvatarModal from "../components/AvatarModal";
 import "../styles/global.css";
 
 const { title } = Astro.props.frontmatter || Astro.props;
@@ -31,74 +33,18 @@ const { title } = Astro.props.frontmatter || Astro.props;
     </head>
     <body>
         <div class="main-container">
-            <div id="avatar-modal" class="avatar-modal-container">
-                <div class="avatar-modal">
-                    <p class="modal-title"> d00mbat </p>
-                    <p class="modal-subtitle"> A bat that was generated using the AI dalle 2 and I minted on the polygon chain. </p>
-                    <img class="modal-close" src="/assets/icons8-close.svg" />
-                    <img class="avatar-modal-img" height="500" width="500" src="/favicon.png" /> 
-                    <div class="modal-description">
-                        <p> It was created directly on OpenSea but I'm planning to write the smart contract for it and deploy it on the matic network. </p>
-                        <!-- <ul style="margin-top: 1.5rem">
-                            <li style="margin: 0.2rem 0"> <p> Token ID: <span> 383911... </span> </p> </li>
-                            <li style="margin: 0.2rem 0"> <p> Owner: <span> 0x000000... </span> </p> </li>
-                        </ul> -->
-                        <a 
-                            href="https://opensea.io/assets/matic/0x2953399124f0cbb46d2cbacd8a89cf0599974963/86322902810144205852617150587309662080690434118817763483839114517669119787009/"
-                            target="_blank"
-                            class="modal-cta"
-                        > 
-                            OpenSea url
-                        </a> 
-                    </div>
-                </div>
-            </div>
+ 
+            <!-- Avatar modal -->
+            <AvatarModal />
+            
             <!-- Sidebar -->
-            <div class="sidebar-layout">
-                <div class="sidebar-main">
-                    <div class="avatar"></div>
-                    <p class="my-name">Zjukd00m</p>
-                    <p class="my-role"> Backend developer </p>
-                </div>
-                <div id="hamburguer-menu">
-                    <i class="fa-solid fa-bars"></i>
-                </div>
-                <div id="sidebar-list-container" class="sidebar-list-container">
-                    <ul class="sidebar-list">
-                        <li class="list-element">
-                            <div class="element-btn">
-                                <a href="/" class="element-name">Who Am I ?</a>
-                            </div>
-                        </li>
-                        <li class="list-element">
-                            <div class="element-btn">
-                                <a href="/experience" class="element-name">Experience</a>
-                            </div>
-                        </li>
-                        <li class="list-element">
-                            <div class="element-btn">
-                                <a href="/projects" class="element-name">Projects</a>
-                            </div>
-                        </li>
-                        <li class="list-element">
-                            <div class="element-btn">
-                                <a href="/contact" class="element-name">Contact</a>
-                            </div>
-                        </li>
-                    </ul>
-                    <div class="sidebar-social-media">
-                        <SocialMedia
-                            name="Github"
-                            url="assets/github.png"
-                            link="https://github.com/zjukd00m"
-                        />
-                    </div>
-                </div>
-            </div>
+            <Sidebar />
+
             <!-- Main content -->
             <div class="slot-layout">
                 <slot />
             </div>
+
             <!-- Footer -->
             <footer id="footer">
                 <marquee direction="right">
@@ -116,38 +62,18 @@ const { title } = Astro.props.frontmatter || Astro.props;
 
 <script global>
     const hamburguerMenu = document.getElementById("hamburguer-menu");
-    const sidebarListContainer = document.getElementById("sidebar-list-container");
-    const elementNames = document.getElementsByClassName("element-name");
+    const sidebarBottom = document.getElementById("sidebar-bottom");
 
     let showHMenu = false;
 
-    if (hamburguerMenu && sidebarListContainer && elementNames?.length) {
+    if (hamburguerMenu && sidebarBottom) {
         hamburguerMenu.addEventListener("click", function () {
             showHMenu = !showHMenu;
-
+            
             if (showHMenu) {
-                sidebarListContainer.style.display = "flex";
+                sidebarBottom.style.display = "flex";
             } else {
-                sidebarListContainer.style.display = "none";
-            }
-        });
-
-        for (let element of elementNames) {
-            element.addEventListener("click", () => {
-                showHMenu = false;
-                sidebarListContainer.style.display = "none";
-            })
-        }
-
-        window.addEventListener("resize", () => {
-            const { innerWidth } = window;
-
-            if (innerWidth > 768 && !showHMenu) {
-                showHMenu = true;
-                sidebarListContainer.style.display = "flex";
-            } else if (innerWidth <= 768 && showHMenu) {
-                showHMenu = false;
-                sidebarListContainer.style.display = "none";
+                sidebarBottom.style.display = "none";
             }
         });
     }
@@ -174,113 +100,11 @@ const { title } = Astro.props.frontmatter || Astro.props;
 
 
 <style>
-    .avatar {
-        height: 250px;
-        width: 250px;
-        border-radius: 50%;
-        background-size: cover;
-        background-image: url("/assets/zjukd00m.png");
-        cursor: pointer;
-    }
-
-    .avatar-blur {
-        height: 100%;
-        border-radius: 50%;
-    }
-
-    /* Modal styles */
-    .avatar-modal-container {
-        display: none;
-        position: absolute;
-        width: 100vw;
-        height: 100vh;
-        background-color: rgba(0.1, 0.1, 0.1, 0.8);
-        z-index: 500;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .avatar-modal {
-        max-width: 550px;
-        background-color: #ECEFF4;
-        padding: 1.3rem;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .modal-title {
-        font-size: 28px;
-        font-weight: 600;
-    }
-
-    .modal-subtitle {
-        font-size: 14px;
-    }
-
-    .modal-description {
-        font-size: 14px;
-    }
-
-    .modal-close {
-        position: absolute;
-        top: 0;
-        right: 0;
-        padding: 1rem 1rem 0 0;
-        cursor: pointer;
-    }
-
-    .modal-close:hover {
-        opacity: 60%;
-    }
-
-    .modal-cta {
-        transition: all 0.5s ease;
-        text-decoration: none; 
-        color: black; 
-        padding: 0.5rem 1rem; 
-        background-color: var(--main-color);
-        border-radius: 10px;
-        font-weight: 500;
-        margin: 0.5rem 0;
-        display: inline-block;
-    }
-
-    .modal-cta:hover {
-        background-color: #50fa7b;
-    }
-
-    .avatar-modal-img {
-        z-index: 600;
-        margin: 0 auto;
-    }
-
-    /* */
-
     .main-container {
         display: grid;
         grid-template-columns: 20% 80%;
         grid-template-rows: 1fr auto;
         height: 100%;
-    }
-
-    .sidebar-list-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 5rem;
-    }
-
-    .sidebar-layout {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-around;
-        background-color: var(--bg-main);
-        height: 100%;
-        box-sizing: border-box;
     }
 
     #hamburguer-menu {
@@ -291,43 +115,9 @@ const { title } = Astro.props.frontmatter || Astro.props;
         color: white;
     }
 
-    .sidebar-list {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 30px; 
-    }
-    .element-name {
-        font-size: 22px;
-        line-height: 1.2px;
-        color: #eceff4;
-        text-decoration: none;
-    }
-    .element-btn:hover {
-        border-bottom: 2px solid #bd93f9;
-    }
-    .sidebar-social-media {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-evenly;
-        gap: 3em;
-    }
-    .my-name {
-        font-size: 32px;
-        text-align: center;
-        color: white;
-        margin-top: 2rem;
-    }
-    .my-role {
-        font-size: 14px;
-        text-align: center;
-        color: white;
-        margin-top: 1.3rem;
-    }
     .slot-layout {
-        background-color: #ECEFF4;
+        /* background-color: #ECEFF4; */
+        /* background-color: #4C566A; */
         padding: 0 30px;
         overflow-y: scroll;
         height: 100%;
@@ -344,6 +134,7 @@ const { title } = Astro.props.frontmatter || Astro.props;
         color: white;
         font-size: 11px;
         font-weight: 600;
+        font-family: var(--text-font);
     }
 
     .marquee-content {

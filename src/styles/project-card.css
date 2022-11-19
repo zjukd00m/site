@@ -14,7 +14,9 @@
 }
 
 .project-card-title {
-    font-size: 28px;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-family: var(--text-font);
 }
 
 .project-card-links {
@@ -30,6 +32,7 @@
 
 .project-card-description {
     font-size: 16px;
+    font-family: var(--text-font);
 }
 
 .project-card-tags {
@@ -42,12 +45,18 @@
 }
 
 .project-card-tag {
-    font-size: 14px;
+    position: relative;
     padding: 0.3rem 0.8rem;
     background-color: var(--bg-main);
     color: white;
     border-radius: 30px;
     font-weight: 600;
+    font-family: var(--text-code);
+    font-size: 12px;
+}
+
+.project-card-tag:hover {
+    color: #E5E9F0;
 }
 
 .project-img-link {
@@ -64,7 +73,7 @@
 
 @media only screen and (max-width: 1440px) {
     .project-card-title {
-        font-size: 24px;
+        font-size: 16px;
     }
 
     .project-card-tag {
@@ -88,11 +97,17 @@
     }
 
     .project-card-tag {
-        font-size: 10px;
+        font-size: 11px;
     }
 
     .project-card-header-wrapper {
         flex-direction: column;
         margin: 10px 0 10px 0;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .project-card-tag {
+        font-size: 10px;
     }
 }

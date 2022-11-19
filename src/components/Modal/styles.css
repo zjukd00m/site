@@ -1,0 +1,91 @@
+.modal-container {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0.1, 0.1, 0.1, 0.8);
+    z-index: 99;
+}
+
+.modal {
+    background-color: #ECEFF4;
+    padding: 1.3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    position: relative;
+    max-width: 600px;
+    box-sizing: border-box;
+}
+
+.avatar-modal-img {
+    margin: 0 auto;
+    width: 500px;
+    height: 500px;
+}
+
+.avatar-modal-cta {
+    transition: all 0.5s ease;
+    text-decoration: none; 
+    padding: 0.5rem 0.5rem; 
+    background-color: var(--main-color);
+    border-radius: 10px;
+    display: inline-block;
+    background-color: var(--bg-purple-dracula);
+    box-sizing: border-box;
+    margin: 0.5rem 0;
+    color: var(--bg-main);
+    font-family: "IBM Plex Sans Condensed", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.avatar-modal-cta:hover {
+    background-color: var(--bg-green-dracula);
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    padding: 1rem 1rem 0 0;
+}
+
+.modal-close-btn:hover {
+    opacity: 60%;
+}
+
+
+@media only screen and (max-width: 1440px) {
+    .modal {
+        max-width: 500px;
+    }
+
+    .avatar-modal-img {
+        height: 400px;
+        width: 400px;
+    }
+
+    .avatar-modal-cta {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .modal {
+        max-width: 350px;
+    }
+
+    .avatar-modal-img {
+        height: 300px;
+        width: 300px;
+    }
+
+    .avatar-modal-cta {
+        font-size: 12px;
+    }
+}

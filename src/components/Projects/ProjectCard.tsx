@@ -1,4 +1,4 @@
-import "../../../styles/project-card.css";
+import "../../styles/project-card.css";
 interface ProjectURLs {
     logo: string;
     link: string;

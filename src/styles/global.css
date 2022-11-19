@@ -1,15 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Rubik:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Work+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital@1&display=swap');
+
 :root {
     --bg-main: #282a36;
     --bg-secondary: #44475a;
     --main-font: "Source Sans Pro", sans-serif;
+    --text-font: "IBM Plex Sans Condensed", sans-serif;
     --text-main: #EEEDE7;
-    --main-color: #bd93f9;
+    --text-code: "Space Mono", monospace;
+    --bg-purple-dracula: #bd93f9;
+    --bg-green-dracula: #50FA7B;
 }
 
 * {
     padding: 0;
     margin: 0;
-    font-family: "Ubuntu", sans-serif;
+    list-style-type: none;
 }
 
 body {
@@ -23,14 +34,84 @@ body {
 *::-webkit-scrollbar-track {
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
 }
- 
+
 *::-webkit-scrollbar-thumb {
   background-color: var(--bg-main);
   outline: 1px solid var(--main-color);
 }
 
-ul {
-    list-style-type: none;
+/* GLOBAL */
+/* Text styles */
+.text {
+    font-family: var(--text-font);
+}
+
+/* MODAL */
+.modal-title {
+    font-size: 28px;
+    font-weight: 600;
+    font-family: "IBM Plex Sans Condensed", sans-serif;
+}
+
+.modal-text {
+    font-family: var(--text-font);
+    font-size: 16px;
+}
+
+@media only screen and (max-width: 1440px) {
+    .modal-text {
+        font-size: 14px;
+    } 
+}
+
+@media only screen and (max-width: 425px) {
+    .modal-text {
+        font-family: 12px !important;
+    }
+}
+
+/* SECTION */
+.section-title {
+    position: relative;
+    font-size: 38px;
+    font-family: "IBM Plex Sans Condensed", sans-serif;
+    text-transform: uppercase;
+    margin: 0.5em 0;
+    width: fit-content;
+}
+
+.section-title::before {
+    content: "";
+    position: absolute;
+    background-color: var(--bg-purple-dracula);
+    height: 3px;
+    width: 100%;
+    left: 0;
+    bottom: 0px;
+}
+
+.section-subtitle {
+    font-size: 21px;
+    font-family: var(--text-font);
+}
+
+.section-description {
+    margin: 0 0 1em 0;
+}
+
+.section-description {
+    font-size: 21px;
+    margin-bottom: 0.5em;
+    font-family: var(--text-font);
+}
+
+/* Layout styles */
+.view {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
 
 .container {
@@ -43,27 +124,33 @@ ul {
     width: 100%;
 }
 
-.section-title {
-    display: inline;
-    font-size: 32px;
-    width: fit-content;
-    text-align: center;
-    position: relative;
-    margin: 1rem 0 1rem 0;
-}
 
-.section-title::before {
-    content: "";
-    background-color: var(--main-color);
-    width: 100%;
-    height: 2px;
-    position: absolute;
-    bottom: -3px;
-}
+@media only screen and (max-width: 1440px) {
+    .text {
+        font-size: 18px;
+    }
 
+    .section-description {
+        font-size: 16px;
+    }
+
+    .section-title {
+        font-size: 32px;
+    }
+
+    .section-subtitle {
+        font-size: 16px;
+    }
+}
 
 @media only screen and (max-width: 768px) {
     .section-title {
         font-size: 28px;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .section-description {
+        font-size: 14px;
     }
 }
