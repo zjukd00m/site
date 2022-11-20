@@ -30,7 +30,7 @@ export default function Sidebar() {
                     <p className="zjk-role"> Backend developer </p>
                 </div>
                 <div id="hamburguer-menu">
-                    <i class="fa-solid fa-bars"></i>
+                    <i className="fa-solid fa-bars"></i>
                 </div>
             </div>
             <div id="sidebar-bottom" className="sidebar-bottom">

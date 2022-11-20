@@ -111,12 +111,20 @@
 }
 
 @media only screen and (max-width: 768px) {
+    .view {
+        height: fit-content !important;
+    }
+
     .sidebar-top {
         flex-direction: row;
         justify-content: space-between;
         width: 100%;
         padding: 0.5em;
         box-sizing: border-box;
+    }
+
+    .sidebar-bottom {
+        display: none;
     }
 
     .zjk-avatar {

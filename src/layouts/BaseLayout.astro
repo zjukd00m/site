@@ -61,6 +61,7 @@ const { title } = Astro.props.frontmatter || Astro.props;
 </html>
 
 <script global>
+    // Hamburguer menu handling
     const hamburguerMenu = document.getElementById("hamburguer-menu");
     const sidebarBottom = document.getElementById("sidebar-bottom");
 
@@ -78,8 +79,19 @@ const { title } = Astro.props.frontmatter || Astro.props;
         });
     }
 
+    // Horizontal sidebar menu handling -> watching the width
+    // of the screen to avoid collapsing the bottom side bar element
+    window.addEventListener("resize", () => {
+        const width = window.innerWidth;
+        if (width > 768 && sidebarBottom) {
+            sidebarBottom.style.display = "flex";
+        } else {
+            sidebarBottom.style.display = "none";
+        }
+    });
+
     // Avatar and modal functionality
-    const avatar = document.querySelector(".avatar");
+    const avatar = document.querySelector(".zjk-avatar");
     const modal = document.getElementById("avatar-modal");
     const modalBtn = document.querySelector(".modal-close");
     let modalOpened = false;
