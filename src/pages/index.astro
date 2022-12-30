@@ -1,5 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import DescriptionCard from "../components/Cards/Description";
+import PersonalDataCard from "../components/Cards/PersonalData";
+import CurrentlyLearningCard from "../components/Cards/CurrentlyLearning";
 ---
 
 <BaseLayout title="Who Am I ?">
@@ -7,29 +10,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <p class="section-title"> Who Am I ? </p>
 
     <div class="section-description">
-        <p>
-            My name's Daniel, a 27 years old junior backend developer from MX. I'm interested in building servers, give them some functionality using REST and GraphQL API's, build and deploy them using containers, I use both sql and no sql databases and cloud services. Also, I know a little of front end mainly with react and I have very basic design skills that were used to create this website.
-        </p>
-
-        <p>
-            I'd say my main skill is to be an autodidact learner using mainly books and documentation, complemented with videos from online resources.
-        </p>
-
-        <p>
-            Currently I'm focused on backend development but I'm learning in my free time web 3 technologies for the Ethereum blockchain using solidity to write smart contracts and typescript to test and deploy them.
-        </p>
-
-        <p>
-            Also machine learning is on my to learn list since it has been like 3 years ago that I haven't built something (I was taught the basics of AI and ML at the university).
-        </p>
-
-        <p>
-            Although I'm a college dropout I'm planning to finish my bachelors since there's only one semester left to fininsh the computer engineering degree.
-        </p>
-
-        <p>
-            In my free time I like to listen to music, workout a little to stay healthy, play videogames, write rap songs and spend time in nature.
-        </p>
+        <!-- Personal Information Card -->
+        <PersonalDataCard client:load />
+        <!-- Description Card -->
+        <DescriptionCard client:load />
+        <!-- Currently Leaning Card -->
+        <CurrentlyLearningCard client:load />
     </div>
 </div>
 </BaseLayout>

@@ -97,12 +97,12 @@ body {
 
 .section-description {
     margin: 0 0 1em 0;
-}
-
-.section-description {
     font-size: 21px;
     margin-bottom: 0.5em;
     font-family: var(--text-font);
+    display: grid;
+    gap: 0.5em;
+    grid-template-columns: 30% 70%;
 }
 
 /* Layout styles */
@@ -124,6 +124,17 @@ body {
     width: 100%;
 }
 
+/* Information icon */
+.info-icon {
+   height: 17px;
+   width: 17px; 
+   border: none;
+   background-color: #ECEFF4;
+}
+
+.info-icon:hover {
+    scale: 1.1;
+}
 
 @media only screen and (max-width: 1440px) {
     .text {
@@ -152,5 +163,6 @@ body {
 @media only screen and (max-width: 425px) {
     .section-description {
         font-size: 14px;
+        grid-template-columns: 1fr;
     }
 }

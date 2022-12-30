@@ -1,0 +1,50 @@
+.base-card {
+    background-color: var(--bg-secondary);
+    color: white;
+    padding: 1rem;
+}
+
+.base-card-header-title {
+    font-size: 21px;
+    margin: 0 0 0.8em 0;
+}
+
+.base-card-body {
+    font-size: 18px;
+}
+
+@media only screen and (max-width: 1440px) {
+    .base-card-header-title {
+        font-size: 18px;
+    }
+}
+
+/* This CSS will be moved later on to a different file... */
+
+.card-text {
+    font-size: 17px;
+}
+
+.card-list-element {
+    display: flex;
+    margin: 0.4em 0;
+    background-color: #4C566A;
+    border-radius: 5px;
+    padding: 0.3em;
+    box-sizing: border-box;
+}
+
+.card-list-element:hover {
+    opacity: 90%;
+}
+
+.card-list-element-title {
+    margin: 0 1em 0 0;
+    width: 5em;
+}
+
+@media only screen and (max-width: 1440px) {
+    .card-text {
+        font-size: 14px;
+    }
+}

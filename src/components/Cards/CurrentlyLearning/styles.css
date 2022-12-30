@@ -1,0 +1,21 @@
+.currently-learning-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.currently-learning-item {
+    display: flex;
+    flex-direction: column;
+    background-color: #4C566A;
+    padding: 0.3em;
+    box-sizing: border-box;
+    border-radius: 5px;
+    position: relative;
+}
+
+.currently-learning-item-icon {
+    border-radius: 10px;
+    height: 45px;
+    width: 45px;
+}
