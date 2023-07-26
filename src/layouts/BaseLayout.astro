@@ -1,7 +1,9 @@
 ---
-import Sidebar from "../components/Sidebar";
-import Modal from "../components/Modal";
+// import Modal from "../components/Modal";
 import AvatarModal from "../components/AvatarModal";
+import Navigation from "../components/Navigation";
+import Header from "../components/Header"
+import GoUpButton from "../components/GoUpButton/index";
 import "../styles/global.css";
 
 const { title } = Astro.props.frontmatter || Astro.props;
@@ -28,95 +30,42 @@ const { title } = Astro.props.frontmatter || Astro.props;
             rel="stylesheet"
         />
         <link rel="icon" href="favicon.png" type="image/png" />
-        <script src="https://kit.fontawesome.com/207fb70a4b.js" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/61e6f6ecb5.js" crossorigin="anonymous"></script>
         <title> { title }</title>
     </head>
     <body>
         <div class="main-container">
  
             <!-- Avatar modal -->
-            <AvatarModal />
+            <!-- <AvatarModal /> -->
             
-            <!-- Sidebar -->
-            <Sidebar />
+            <!-- Header -->
+            <Header />
 
             <!-- Main content -->
             <div class="slot-layout">
                 <slot />
             </div>
 
-            <!-- Footer -->
-            <footer id="footer">
-                <marquee direction="right">
-                    <div class="marquee-content">
-                        <p class="footer-paragraph"> ICONS WERE DOWNLOADED FROM <a href="https://iconscout.com/" class="footer-p-styled" target="_blank"> ICONSCOUT </a> AND <a href="https://icons8.com/icons/" class="footer-p-styled" target="_blank"> ICONS8 </a> </p>
-                        <p class="footer-paragraph"> 
-                            THIS WEBSITE WAS WRITTEN WITH <span class="footer-p-styled"> ASTRO.JS </span> AND <span class="footer-p-styled"> REACT.JS </span>
-                        </p>
-                    </div>
-                </marquee>
-            </footer>
+            <!-- Go Up Button -->
+            <div class="go-up-button">
+                <GoUpButton />
+            </div>
         </div>
     </body>
 </html>
 
-<script global>
-    // Hamburguer menu handling
-    const hamburguerMenu = document.getElementById("hamburguer-menu");
-    const sidebarBottom = document.getElementById("sidebar-bottom");
-
-    let showHMenu = false;
-
-    if (hamburguerMenu && sidebarBottom) {
-        hamburguerMenu.addEventListener("click", function () {
-            showHMenu = !showHMenu;
-            
-            if (showHMenu) {
-                sidebarBottom.style.display = "flex";
-            } else {
-                sidebarBottom.style.display = "none";
-            }
-        });
-    }
-
-    // Horizontal sidebar menu handling -> watching the width
-    // of the screen to avoid collapsing the bottom side bar element
-    window.addEventListener("resize", () => {
-        const width = window.innerWidth;
-        if (width > 768 && sidebarBottom) {
-            sidebarBottom.style.display = "flex";
-        } else {
-            sidebarBottom.style.display = "none";
-        }
-    });
-
-    // Avatar and modal functionality
-    const avatar = document.querySelector(".zjk-avatar");
-    const modal = document.getElementById("avatar-modal");
-    const modalBtn = document.querySelector(".modal-close-btn");
-    let modalOpened = false;
-
-    function toggleAvatarModal () {
-        modalOpened = !modalOpened;
-
-        if (modal && modalOpened) {
-            modal.style.display = "flex";
-        } else if (modal && !modalOpened) {
-            modal.style.display = "none";
-        }
-    }
-
-    avatar?.addEventListener("click", toggleAvatarModal);
-    modalBtn?.addEventListener("click", toggleAvatarModal);
+<script>
 </script>
 
 
 <style>
     .main-container {
         display: grid;
-        grid-template-columns: 20% 80%;
-        grid-template-rows: 1fr auto;
-        height: 100%;
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr;
+        background-color: #D8DEE9;
+        position: relative;
     }
 
     #hamburguer-menu {
@@ -128,11 +77,10 @@ const { title } = Astro.props.frontmatter || Astro.props;
     }
 
     .slot-layout {
-        /* background-color: #ECEFF4; */
-        /* background-color: #4C566A; */
-        padding: 0 30px;
-        overflow-y: scroll;
-        height: 100%;
+        background-color: #ECEFF4;
+        /* padding: 0 30px; */
+        /* overflow-y: scroll; */
+        margin: 0 120px 0 120px;
     }
     
     slot {
@@ -149,24 +97,7 @@ const { title } = Astro.props.frontmatter || Astro.props;
         font-family: var(--text-font);
     }
 
-    .marquee-content {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 50%;
-        padding: 0.2rem;
-    }
-
-    .footer-p-styled {
-        text-decoration: none;
-        color: #50fa7b;
-    }
-
     @media only screen and (max-width: 1440px) {
-        .sidebar-list {
-            gap: 20px;
-        }
         .avatar {
             height: 200px;
             width: 200px;
@@ -193,19 +124,10 @@ const { title } = Astro.props.frontmatter || Astro.props;
     }
 
     @media only screen and (max-width: 768px) {
-        .main-container {
+        /* .main-container {
             display: flex;
             flex-direction: column;
-        }
-
-        .sidebar-main {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 1rem;
-            margin: 0.4rem 0 0.4rem 0.4rem;
-        }
-
+        } */
 
         #hamburguer-menu {
             display: block;
@@ -213,28 +135,6 @@ const { title } = Astro.props.frontmatter || Astro.props;
             margin-right: 1rem;
         }
         
-        .sidebar-layout {
-            align-items: center;
-            height: fit-content;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            justify-content: center;
-        }
-
-        .sidebar-list {
-            align-items: flex-start;
-            gap: 0.5rem;
-            width: 100%;
-            padding: 1rem;
-            box-sizing: border-box;
-        }
-
-        .sidebar-list-container {
-            grid-column: span 2;
-            height: 100vh;
-            justify-content: center;
-        }
-
         .list-element {
             padding: 0.5rem;
             width: 100%;
@@ -267,21 +167,8 @@ const { title } = Astro.props.frontmatter || Astro.props;
     }
 
     @media only screen and (max-width: 425px) {
-        .sidebar-main {
-            flex-grow: 1;
-            flex-wrap: wrap;
-        }
-
-        .sidebar-layout {
-            justify-content: flex-start;
-        }
-
         #hamburguer-menu {
             display: block;
-        }
-
-        .sidebar-list-container {
-            display: none;
         }
     }
 </style>

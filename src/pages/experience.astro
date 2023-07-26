@@ -1,91 +1,10 @@
----
-import BaseLayout from "../layouts/BaseLayout.astro";
-import ExperienceCard from "../components/ExperienceCard";
----
-
-<BaseLayout title="Experience">
-    <div class="experience-layout">
-        <div class="left-section">
-            <div class="experience-top-section">
-                <p class="section-title"> Experience </p>
-                <div style="margin: 1rem 0 1rem 0;">
-                    <ExperienceCard 
-                        client:load
-                        title="Grutstudio" 
-                        initialDate="2021"
-                        endDate="present"
-                        role="Backend developer"
-                        descriptions={[
-                            "Building REST and GraphQL API's",
-                            "Using Google Cloud and Digital Ocean to manage instrastructure",
-                            "Creating CI/CD pipelines to automate the deployment workflow",
-                        ]}
-                    />
-                </div>
-            </div>
-            <div class="experience-bottom-section">
-                <p class="section-title"> Education </p>
-                <div style="margin: 1rem 0 1rem 0;">
-                    <ExperienceCard 
-                        client:load
-                        title="UNAM FI" 
-                        initialDate="2014"
-                        endDate="?"
-                        role="Computer Engineering"
-                        descriptions={[
-                            "I'm currently a dropout student for personal reasons but I'm planning to finish my bachelor degree (I'm at the 8th semester out of 9).",
-                        ]}
-                    />
-                </div>
-            </div>
-        </div>
-        <div class="right-section">
-            <p class="section-title"> Tech Stack </p>
-            <div class="section-icons">
-                <div class="icons-left icons">
-                    <img src="/assets/python.svg" alt="python" />
-                    <img src="/assets/google-cloud.svg" alt="gcp" />
-                    <img src="/assets/javascript.svg" alt="javascript" />
-                    <img src="/assets/typescript.svg" alt="typescript" />
-                    <img src="/assets/postgresql.svg" alt="postgresql" />
-                    <img src="/assets/mysql.svg" alt="mysql" />
-                    <div class="no-icons">
-                        <p> express.js </p>
-                        <p> docker </p>
-                        <p> mongodb </p>
-                        <p> solidity </p>
-                        <p> flask </p>
-                        <p> pandas </p>
-                    </div>
-                </div>
-                <div class="icons-right icons">
-                    <img src="/assets/firebase.svg" alt="firebase" />
-                    <img src="/assets/nginx.svg" alt="nginx" />
-                    <img src="/assets/node.svg" alt="django" />
-                    <img src="/assets/django.svg" alt="django" />
-                    <img src="/assets/react.svg" alt="react" />
-                    <img src="/assets/graphql.svg" alt="graphql" />
-                    <div class="no-icons">
-                        <p> fastapi </p>
-                        <p> digital ocean </p>
-                        <p> github actions </p>
-                        <p> ubuntu </p>
-                        <p> bash scripting </p>
-                        <p> numpy </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</BaseLayout>
-
-
 <style>
     .experience-layout {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
         height: 100%;
+        background-color: blue;
     }
 
     .left-section {

@@ -1,0 +1,40 @@
+.navigation {
+    width: 100%;
+    background-color: var(--bg-main);
+    padding: 0.5rem 0 0.5rem 0;
+}
+
+.navigation-list {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.navigation-list-item {
+    position: relative;
+}
+
+.navigation-list-item > a {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family: var(--text-font);
+    font-size: 12.5px;
+    color: var(--text-main);
+}
+
+.navigation-list-item > a::before {
+    content: "";
+    position: absolute;
+    background-color: var(--bg-purple-dracula);
+    height: 3px;
+    width: 0;
+    left: 0;
+    bottom: -6px;
+    transition: 0.3s;
+}
+
+.navigation-list-item > a:hover::before {
+    width: 100%;
+}

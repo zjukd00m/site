@@ -21,12 +21,12 @@ const personalData = [
 
 export default function PersonalDataCard() {
     return (
-        <BaseCard title="Personal Information">
-            <div>
-                <ul>
+        <BaseCard title="">
+            <div className="">
+                <ul className="">
                     {
                         personalData?.map((slot, index) => (
-                            <li key={index}>
+                            <li key={index} className="">
                                 <div className="card-list-element">
                                     <p className="card-list-element-title card-text"> { slot.title } </p>
                                     <p className="card-list-element-value card-text"> { slot.value } </p>

@@ -72,53 +72,44 @@ body {
 
 /* SECTION */
 .section-title {
-    position: relative;
-    font-size: 38px;
+    text-align: left;
+    font-size: 27px;
     font-family: "IBM Plex Sans Condensed", sans-serif;
     text-transform: uppercase;
-    margin: 0.5em 0;
-    width: fit-content;
-}
-
-.section-title::before {
-    content: "";
-    position: absolute;
-    background-color: var(--bg-purple-dracula);
-    height: 3px;
-    width: 100%;
-    left: 0;
-    bottom: 0px;
-}
-
-.section-subtitle {
-    font-size: 21px;
-    font-family: var(--text-font);
+    margin: 0.5rem;
 }
 
 .section-description {
-    margin: 0 0 1em 0;
     font-size: 21px;
-    margin-bottom: 0.5em;
     font-family: var(--text-font);
+}
+
+.section__who-am-i {
     display: grid;
-    gap: 0.5em;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+/* Go up button */
+.go-up-button {
+    width: fit-content;
+    background-color: var(--bg-purple-dracula);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    margin-right: 0.5rem;
+    border-radius: 50%;
+}
+
+.go-up-button:hover {
+    cursor: pointer;
 }
 
 /* Layout styles */
-.view {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-}
-
 .container {
     box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
+    padding-bottom: 1rem;
     height: 100%;
     width: 100%;
 }
@@ -141,7 +132,7 @@ body {
     }
 
     .section-description {
-        font-size: 16px;
+        /* font-size: 16px; */
     }
 
     .section-title {
@@ -156,12 +147,5 @@ body {
 @media only screen and (max-width: 768px) {
     .section-title {
         font-size: 28px;
-    }
-}
-
-@media only screen and (max-width: 425px) {
-    .section-description {
-        font-size: 14px;
-        grid-template-columns: 1fr;
     }
 }

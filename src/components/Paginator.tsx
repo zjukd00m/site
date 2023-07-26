@@ -5,14 +5,14 @@ interface PaginatorProps {
     total: number;
 }
 
+// Generate a pagination component which receives as input the current page and
+// the total number of items to be fetched from the server.
 export default function Paginator(props: PaginatorProps) {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const { page, total } = props;
 
     const pages = [...Array(page).keys()];
-
-    console.log(pages);
 
     return (
         <div className="paginator">
