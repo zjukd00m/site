@@ -22,7 +22,10 @@ export default function MyTechStack() {
                 {
                     programmingLanguages?.map((programmingLanguage) => (
                         <div className="my_tech_stack__language" key={programmingLanguage.name}>
-                            { programmingLanguage.logo ? <> { programmingLanguage.logo } </> : null}
+                            <div className="my_tech_stack__language_logo">
+                                { programmingLanguage.logo }
+                                <p className="my_tech_stack__language_name"> { programmingLanguage.name } </p>
+                            </div>
                         </div>
                     ))
                 }

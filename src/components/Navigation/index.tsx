@@ -2,12 +2,8 @@ import "./styles.css";
 
 const navigationSections = [
     { 
-        sectionName: "Who Am I ?",
+        sectionName: "Home",
         path: "/",
-    },
-    { 
-        sectionName: "Experience",
-        path: "/experience",
     },
     { 
         sectionName: "Projects",
